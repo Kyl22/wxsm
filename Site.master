@@ -1,0 +1,39 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_l5fj1mr1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <header>
+    <nav id="nav">
+    <ul>
+      <li><a href="/" >主页</a></li>
+      <li><a href="/">文章</a></li>
+      <li><a href="/">留言</a></li>
+      <li><a href="/">关于</a></li>
+      
+    </ul>  
+    </nav>
+    </header>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    <footer>
+    <div class="footer-mid">
+    <div class="links">
+      <h2>友情链接</h2>
+      <ul>
+        <li><a href="/">blabla</a></li>
+        <li><a href="http://www.3dst.com">blabla</a></li>
+      </ul>
+    </div>
+    
+    </footer>
+    </form>
+</body>
+</html>
