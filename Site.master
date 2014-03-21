@@ -1,8 +1,9 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_srl5varh" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_x1rxhwr4" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="Site.css" rel="stylesheet" type="text/css" />
@@ -16,9 +17,9 @@
     <ul>
       <li><a href="Default.aspx" >主页</a></li>
       <li><a href="Default.aspx">文章</a></li>
-      <li><a href="Default.aspx">电影</a></li>
-      <li><a href="Default.aspx">音乐</a></li>
-      <li><a href="Default.aspx">小说</a></li>
+      <li><a href="Default.aspx">占位</a></li>
+      <li><a href="Default.aspx">占位</a></li>
+      <li><a href="Default.aspx">占位</a></li>
       <li><a href="Default.aspx">留言</a></li>
       <li><a href="Default.aspx">关于</a></li>
       
