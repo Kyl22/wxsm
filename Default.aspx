@@ -1,11 +1,30 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="_Default, App_Web_xjtijlxg" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="_Default, App_Web_anpdxu2i" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="mainbody">
   <div class="info">
     <div style="border-radius: 6px;float:left;overflow: hidden;display:inline;">
-    <img src="IMG/temp.jpg"  alt="error"/>
+    
+    <div class="container">
+	<section class="cr-container">				
+		<input id="select-img-1" name="radio-set-1" type="radio" class="cr-selector-img-1" checked="checked"/>
+		<label for="select-img-1" class="cr-label-img-1"></label>
+		<input id="select-img-2" name="radio-set-1" type="radio" class="cr-selector-img-2" />
+		<label for="select-img-2" class="cr-label-img-2"></label>
+		<input id="select-img-3" name="radio-set-1" type="radio" class="cr-selector-img-3" />
+		<label for="select-img-3" class="cr-label-img-3"></label>
+		<input id="select-img-4" name="radio-set-1" type="radio" class="cr-selector-img-4" />
+		<label for="select-img-4" class="cr-label-img-4"></label>
+		<div class="cr-bgimg">
+			<div><span></span><span></span><span></span><span></span></div>
+            <div><span></span><span></span><span></span><span></span></div>
+            <div><span></span><span></span><span></span><span></span></div>
+            <div><span></span><span></span><span></span><span></span></div>
+	    </div>
+	</section>
+    </div>
+
     </div>
     <div class="card">
       <h1>名片</h1>
@@ -21,7 +40,11 @@
         <li><a href="Default.aspx" class="heart" title="关注"></a></li>
       </ul>
     </div>
-  </div>
+    <div class="search">
+        <asp:TextBox class="searchTextbox" runat="server" ID="search"/>
+        <asp:Button class="searchButton" ID="Button1" runat="server" text="Go"/>
+        </div>
+    </div>
   
   <div style="width: 1000px;margin: 0 auto;" >
     <ul style="width: 666px; float: left;" >
@@ -67,15 +90,12 @@
             <li class="blogbox_time">2013-8-7</li>
           </ul>
         </div>
-        <!--arrow_box end-->  
+         
       </li>
     </ul>
-    <!--bloglist end-->
+    
     <aside>
-        <div>
-        <asp:TextBox class="searchTextbox" runat="server" ID="search"/>
-        <asp:Button class="searchButton" ID="Button1" runat="server" text="Go"/>
-        </div>
+        
         <div class="notice">
         <h2>公告</h2>
         <p>正在完善主页。</p>
