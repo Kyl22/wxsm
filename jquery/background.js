@@ -17,8 +17,8 @@
   var defaults = {
     speed: 0,
     interaction: false,
-    size: 20,
-    count: 20,
+    size: 1,
+    count: 50,
     opacity: 0,
     color: "#ffffff",
     windPower: 1,

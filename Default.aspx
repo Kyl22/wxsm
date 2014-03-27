@@ -1,29 +1,18 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_fp1fwhwj" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_rhbxlwe4" %>
 
 <!DOCTYPE html />
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="posters.css">
+    <title>wxsm</title>
+    <link type="text/css" rel="stylesheet" href="css/posters.css"/>
+    <link type="text/css" rel="stylesheet" href="css/background.css"/>
 	<script type="text/javascript" src="jquery/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="jquery/background.js"></script>
     <script type="text/javascript" src="jquery/posters.js"></script>
-  <style>
-    body {
-      background: Black;
-    }
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      position:absolute;
-    }
-	</style>
 	<script>
 	    $(document).ready(function () {
-	        $("canvas.snow").let_it_snow();
-            var posters1 = new posters('posters1', { className: "posters" },
+	    
+        var posters1 = new posters('posters1', { className: "posters" },
         [{ "img": "images\/1.jpg", "url": "images\/1.jpg" },
         { "img": "images\/2.jpg", "url": "images\/2.jpg" },
         { "img": "images\/3.jpg", "url": "images\/3.jpg" },
@@ -42,8 +31,7 @@
         });
 	</script>
 </head>
-<body>
-  <canvas width="100%" height="100%" class="snow"></canvas>
+<body style="background-color:Black">
   <center><div id="posters1"></div></center>
 </body>
 </html>
