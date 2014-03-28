@@ -1,15 +1,13 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_rhbxlwe4" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_sd4yv51g" %>
 
 <!DOCTYPE html />
 <html>
 <head>
     <title>wxsm</title>
     <link type="text/css" rel="stylesheet" href="css/posters.css"/>
-    <link type="text/css" rel="stylesheet" href="css/background.css"/>
-	<script type="text/javascript" src="jquery/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="jquery/background.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="jquery/posters.js"></script>
-	<script>
+	<script type="text/javascript">
 	    $(document).ready(function () {
 	    
         var posters1 = new posters('posters1', { className: "posters" },

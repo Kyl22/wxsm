@@ -12,10 +12,10 @@
     posters.options = {
         direct: "left", //滚动的方向
         initPage: 1, //默认当前显示第几条
-        className: "posterTvGrid", //最外层样式
+        className: "posters", //最外层样式
         width: 0, //最外层宽
         height: 0, //最外层高  
-        delay: 1000000, //滚动间隔（毫秒）
+        delay: 3000, //滚动间隔（毫秒）
         speed: 500 //滚动速度毫秒
     };
     posters.prototype = {
