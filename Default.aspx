@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_sd4yv51g" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="_Default, App_Web_s540bsdo" %>
 
 <!DOCTYPE html />
 <html>
@@ -7,6 +7,8 @@
     <link type="text/css" rel="stylesheet" href="css/posters.css"/>
 	<script type="text/javascript" src="jquery/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="jquery/posters.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/_2048.css"/>
+    <script type="text/javascript" src="jquery/_2048.js"></script>
 	<script type="text/javascript">
 	    $(document).ready(function () {
 	    
@@ -28,8 +30,19 @@
         );
         });
 	</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#_2048")._2048();
+        });
+    </script>
+
+    
 </head>
 <body style="background-color:Black">
-  <center><div id="posters1"></div></center>
+    <form id="form1" runat="server">
+        <div id="_2048" style="width:100%"></div>
+        <!--<center><div id="posters1"></div></center>-->
+        
+    </form>
 </body>
 </html>
