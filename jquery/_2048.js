@@ -27,7 +27,7 @@
         var scoreBoard = $("<div class='scoreBoard' id='scoreBoard'></div>");
         scoreBoard.html("SCORE: " + score);
         var controlBoard = $("<div class='controlBoard' id='controlBoard'></div>");
-        var resetButton = $("<input class='resetButton' id='resetButton' value='RESTAR'/>");
+        var resetButton = $("<input type='button' class='resetButton' id='resetButton' value='RESTAR'/>");
         var content = $("<div class='container' id='container' tabindex='0'></div>");
         holder.appendTo(this);
         scoreBoard.appendTo(holder);
