@@ -1,10 +1,8 @@
 ﻿
 (function ($) {
     var defaults = {
-        className: "container",
         boxWidth: 100,
         boxHeight: 100,
-        boxClassName: "box",
         delay: 200
     }
 
@@ -13,6 +11,7 @@
         var options = $.extend(defaults, options);
         var matrix = new Array();
         var score = 0;
+        var isGameOver = false;
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 4; j++) {
                 matrix[i * 4 + j] = {
@@ -24,21 +23,21 @@
                 }
             }
         }
-        var scoreBoard = $("<div></div>");
-        scoreBoard.attr({ class: "scoreBoard" });
-        scoreBoard.html("Score: " + score);
-        scoreBoard.appendTo(this);
-        var content = $("<div></div>");
-        content.attr({ tabindex: '0', class: options.className });
-        content.appendTo(this);
+        var holder = $("<div class='holder' id='holder'></div>");
+        var scoreBoard = $("<div class='scoreBoard' id='scoreBoard'></div>");
+        scoreBoard.html("SCORE: " + score);
+        var controlBoard = $("<div class='controlBoard' id='controlBoard'></div>");
+        var resetButton = $("<input class='resetButton' id='resetButton' value='RESTAR'/>");
+        var content = $("<div class='container' id='container' tabindex='0'></div>");
+        holder.appendTo(this);
+        scoreBoard.appendTo(holder);
+        controlBoard.appendTo(holder);
+        content.appendTo(holder);
+        resetButton.appendTo(controlBoard);
         content.focus();
         var box = new Array();
         newbox();
         bind();
-
-
-
-
         function newbox() {
             var emptyMatrix = 0;
             for (var i = 0; i < 16; i++) {
@@ -63,7 +62,7 @@
             }
             matrix[i].taken = true;
             var newbox = $("<div></div>");
-            newbox.attr({ 'class': options.boxClassName, 'position': i });
+            newbox.attr({ 'class': 'box', 'position': i });
             random = Math.floor(Math.random() * 3 + 1);
             if (random == 3) {
                 newbox.attr({ 'value': 4 });
@@ -112,17 +111,10 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty - 2].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty - 1].taken = false;
                                     matrix[empty - 2].combined = true;
                                     empty--;
-                                    box.splice(k, 1);
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                     ismove = true;
                                 }
 
@@ -151,25 +143,16 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty - 2].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty - 1].taken = false;
                                     matrix[empty - 2].combined = true;
                                     empty--;
-                                    box.splice(k, 1);
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
                             }
                         }
                     }
-
                 }
                 return ismove;
-
             }
             else if (dir == "right") {
                 for (i = 3; i > -1; i--) {
@@ -198,20 +181,12 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty + 2].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty + 1].taken = false;
                                     matrix[empty + 2].combined = true;
                                     empty++;
-                                    box.splice(k, 1);
                                     ismove = true;
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
-
                             }
                             continue;
                         }
@@ -237,19 +212,11 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty + 2].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty + 1].taken = false;
                                     matrix[empty + 2].combined = true;
                                     empty++;
-                                    box.splice(k, 1);
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
-
                             }
                         }
                     }
@@ -282,20 +249,12 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty - 8].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty - 4].taken = false;
                                     matrix[empty - 8].combined = true;
                                     empty -= 4;
-                                    box.splice(k, 1);
                                     ismove = true;
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
-
                             }
                             continue;
                         }
@@ -322,26 +281,17 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty - 8].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty - 4].taken = false;
                                     matrix[empty - 8].combined = true;
                                     empty -= 4;
-                                    box.splice(k, 1);
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
-
                             }
                         }
                     }
 
                 }
                 return ismove;
-
             }
             else if (dir == "down") {
                 for (i = 0; i < 4; i++) {
@@ -369,18 +319,11 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty + 8].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty + 4].taken = false;
                                     matrix[empty + 8].combined = true;
                                     empty += 4;
-                                    box.splice(k, 1);
                                     ismove = true;
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
 
                             }
@@ -409,27 +352,27 @@
                                 }
                                 var value2 = box[temp].attr('value');
                                 if (value1 == value2 && matrix[empty + 8].combined == false) {
-                                    var value3 = parseInt(value1) * 2;
-                                    box[k].animate({ opacity: "0" }, options.delay);
-                                    box[temp].attr('value', value3);
-                                    box[temp].html(box[temp].attr('value'));
-                                    changeColor(temp, value3);
+                                    combineBox(k, temp, value1);
                                     matrix[empty + 4].taken = false;
                                     matrix[empty + 8].combined = true;
                                     empty += 4;
-                                    box.splice(k, 1);
-                                    score += value3;
-                                    scoreBoard.html("Score: " + score);
                                 }
-
                             }
                         }
                     }
-
                 }
                 return ismove;
-
             }
+        }
+        function combineBox(source, target, value) {
+            var _value = parseInt(value) * 2;
+            box[source].animate({ opacity: "0" }, options.delay);
+            box[target].attr('value', _value);
+            box[target].html(box[target].attr('value'));
+            changeColor(target, _value);
+            box.splice(source, 1);
+            score += _value;
+            scoreBoard.html("SCORE: " + score);
         }
         function changeColor(boxNum, boxVal) {
             if (boxVal == 2) {
@@ -499,15 +442,22 @@
         }
 
         function bind() {
+            resetButton.click(function () {
+                if (confirm("RESTAR?")) {
+                    location.reload();
+                }
+            });
             content.keydown(function (event) {
+                if (isGameOver == true) {
+                    return false;
+                }
                 if (event.which == 37) {
                     var ismove = run("left");
-                    var isgameover = false;
                     if (ismove) {
                         newbox();
                     }
-                    isgameover = gameover();
-                    if (isgameover) {
+                    if (gameover()) {
+                        isGameOver = true;
                         scoreBoard.html(scoreBoard.html() + "<br/>Game Over");
                     }
 
@@ -516,42 +466,35 @@
 
                 else if (event.which == 38) {
                     var ismove = run("up");
-                    var isgameover = false;
                     if (ismove) {
                         newbox();
                     }
-                    isgameover = gameover();
-                    if (isgameover) {
+                    if (gameover()) {
+                        isGameOver = true;
                         scoreBoard.html(scoreBoard.html() + "<br/>Game Over");
                     }
                 }
                 else if (event.which == 39) {
                     var ismove = run("right");
-                    var isgameover = false;
                     if (ismove) {
                         newbox();
                     }
-                    isgameover = gameover();
-                    if (isgameover) {
+                    if (gameover()) {
+                        isGameOver = true;
                         scoreBoard.html(scoreBoard.html() + "<br/>Game Over");
                     }
                 }
                 else if (event.which == 40) {
                     var ismove = run("down");
-                    var isgameover = false;
                     if (ismove) {
                         newbox();
                     }
-                    isgameover = gameover();
-                    if (isgameover) {
+                    if (gameover()) {
+                        isGameOver = true;
                         scoreBoard.html(scoreBoard.html() + "<br/>Game Over");
                     }
                 }
             })
         }
-
     }
-
-
-
 })(jQuery);
